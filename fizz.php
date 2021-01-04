@@ -1,7 +1,4 @@
-<?php 
-$fizz = $_POST['fizz'];
-$buzz = $_POST['buzz'];
-?>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -29,32 +26,34 @@ $buzz = $_POST['buzz'];
    <p>【出力】</p>
    <?php 
 
-     $fizz = mb_convert_kana($fizz,"n");
-     $buzz = mb_convert_kana($buzz,"n");
 
-     $fi = (int)$fizz;
-     $bu = (int)$buzz;
+     $fizz = mb_convert_kana($_POST['fizz'],"n");
+     $buzz = mb_convert_kana($_POST['buzz'],"n");
+    
 
 
     if(isset($_POST['submit'])){
 
-     if($fi === 0 || $bu === 0){
-       echo "整数値を入力してください";
-     } elseif((int)$fizz != (float)$fizz || (int)$buzz != (float)$buzz){
-       echo "整数値を入力してください";
-     } else{
+      if((int)$fizz === 0 || (int)$buzz === 0){
+        echo "整数値を入力してください";
+      } elseif((int)$fizz != (float)$fizz || (int)$buzz != (float)$buzz){
+        echo "整数値を入力してください";
+      } else{
      
-      for($i = 1; $i <= 100; $i++){
+        for($i = 1; $i <= 100; $i++){
     
-        if($i % $fizz === 0 && $i % $buzz === 0){
-          echo "FizzBuzz$i<br>";
-        } elseif($i % $fizz === 0){
-          echo "fizz$i<br>";
-        } elseif($i % $buzz === 0){
-          echo "buzz$i<br>";
-        }  
-   }
-  } 
+          if($i % $fizz === 0 && $i % $buzz === 0){
+             echo "FizzBuzz$i<br>";
+          } elseif($i % $fizz === 0){
+             echo "fizz$i<br>";
+          } elseif($i % $buzz === 0){
+             echo "buzz$i<br>";
+          }  
+      
+        }
+     
+      } 
+  
     }
    
    ?>
